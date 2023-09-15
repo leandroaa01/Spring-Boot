@@ -1,22 +1,25 @@
 package ifrn.pi.eventos.Controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class EventsController {
+
+    
+
     @RequestMapping("/Events/form")
     public String form(){
         return "formEvent";
     }
 
-    @RequestMapping("/Events/processarFormulario")
+    @PostMapping("/Events/processarFormulario")
     public String processarFormulario(
-            @RequestParam("Nome") String nome,
-            @RequestParam("local") String local,
-            @RequestParam("data") String data,
-            @RequestParam("time") String horario) {
+             String nome,
+             String local,
+             String data,
+             String horario) {
         
         System.out.println("Nome: " + nome);
         System.out.println("Local: " + local);
@@ -26,4 +29,6 @@ public class EventsController {
         // Redirecione para uma página de confirmação
         return "confirmacao";
     }
+
+    
 }

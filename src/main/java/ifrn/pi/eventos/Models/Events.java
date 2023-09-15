@@ -30,6 +30,9 @@ public class Events {
     public void setTime(String time) {
         this.time = time;
     }
-
+    @Override
+    public String toString() {
+        return "Events [name=" + name + ", local=" + local + ", date=" + date + ", time=" + time + "]";
+    }
 
 }
