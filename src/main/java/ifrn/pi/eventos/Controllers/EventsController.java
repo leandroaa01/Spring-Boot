@@ -15,16 +15,16 @@ public class EventsController {
 
     @RequestMapping("/Events/form")
     public String form() {
-        return "formEvent";
+        return "Events/formEvent";
     }
 
-    @PostMapping("/Events/processarFormulario")
+    @PostMapping("/Events")
     public String processarFormulario(Events eventos){
         System.out.println(eventos);
         er.save(eventos);
 
         // Redirecione para uma página de confirmação
-        return "confirmacao";
+        return "Events/confirmacao";
     }
 
     

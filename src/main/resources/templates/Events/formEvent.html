@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Eventos</title>
 </head>
 <body>
-    <h1>form</h1>
-    <form action="/Events/processarFormulario" method="post">
+    <div th:replace="~{menu :: menu}"></div>
+    <div class="container">
+    <h1>Criado Evento</h1>
+    <form action="/Events" method="post">
     <div><label for="name">Nome:<input type="text" name="name"></label></div>
     <div><label for="local">Local:<input type="text" name="local"></label></div>
     <div><label for="data">Data:<input type="date" name="date"></label></div>
     <div><label for="time">horario:<input type="text" name="time"></label></div>
     <div>
-        <button type="submit">Salvar</button>
-        <button type="reset">Limpar</button>
+        <button  class="waves-effect waves-light btn-small" type="submit">Salvar</button>
+        <button  class="waves-effect waves-light btn-small" type="reset">Limpar</button>
+    </div>
     </div>
     </form>
 </body>
