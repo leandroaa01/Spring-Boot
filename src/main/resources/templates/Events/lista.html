@@ -24,12 +24,12 @@
         <tbody>
             <tr th:each ="e : ${Events}">
                 <td th:text="${e.id}">1</td>
-                <td th:text="${e.name}">Name event</td>
+                <td><a th:href="@{/Events/{id}(id=${e.id})}"><span th:text="${e.name}">Name event </span></a></td>
                 <td th:text="${e.local}">Local event</td>
                 <td th:text="${e.date}">Date event</td>
                 <td th:text="${e.time}">Time event</td>
             </tr>
-        </tbody>
+        </tbody> 
     </table>
 </body>
 </html>
