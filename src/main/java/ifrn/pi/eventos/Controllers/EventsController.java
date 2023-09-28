@@ -59,8 +59,7 @@ public class EventsController {
      Events events = opt.get();
 
      md.addObject("Events", events);
-
-     List<Convidados> convidados = cr.findByEvents(convidados);
+     List<Convidados> convidados = cr.findByEvents(events);
      md.addObject("Convidados", convidados);
      return md;
     }
