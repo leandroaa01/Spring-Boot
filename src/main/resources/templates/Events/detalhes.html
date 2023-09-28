@@ -21,7 +21,50 @@
              <p><strong>Data: </strong><span th:text ="${Events.date}">date event</span></p>
              <p><strong>Horario: </strong><span th:text ="${Events.time}">time event</span></p>
             </div>
-            
+          </div>
+        </div>
+      </div>
+      <div class="col s12">
+        <div class="card horizontal">
+          <div class="card-stacked ">
+            <div class="card-content green-text">
+            <span class="card-title">Adicionar Covidado</span>
+             <form action="" method="post">
+              <div><label for="">Nome:<input type="text" name="nome"></label></div>
+              <div><label for="">RG:<input type="text" name="rg"></label></div> 
+              <button class="btn">Salvar</button>
+              <button class="btn">Limpar</button>
+             </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12">
+        <div class="card horizontal">
+          <div class="card-stacked ">
+            <div class="card-content green-text">
+            <span class="card-title">Convidados</span>
+            <table class="highlight">
+              <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>RG</th>
+                    
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr th:each ="c : ${Convidados}">
+                      <td th:text="${c.id}">1</td>
+                      <td th:text="${c.nome}">Name event</td>
+                      <td th:text="${c.rg}">RG event</td>
+               
+                  </tr>
+              </tbody> 
+          </table>
+             
+            </div>
           </div>
         </div>
       </div>
