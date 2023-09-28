@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ifrn.pi.eventos.Models.Convidados;
 import ifrn.pi.eventos.Models.Events;
+import ifrn.pi.eventos.repositories.ConvidadoRepository;
 import ifrn.pi.eventos.repositories.EvetRepository;
 
 @Controller
@@ -19,6 +21,9 @@ import ifrn.pi.eventos.repositories.EvetRepository;
 public class EventsController {
     @Autowired
     private EvetRepository er;
+    
+    @Autowired
+    private ConvidadoRepository cr;
 
     @GetMapping("/form")
     public String form() {
@@ -54,7 +59,28 @@ public class EventsController {
      Events events = opt.get();
 
      md.addObject("Events", events);
+
+     List<Convidados> convidados = cr.findByEvents(convidados);
+     md.addObject("Convidados", convidados);
      return md;
     }
     
+    @PostMapping("/{idEvent}")
+    public String salvarConvidado(@PathVariable Long idEvent, Convidados convidados){
+        System.out.println("Id do Evento:" + idEvent);
+        System.out.println(convidados);
+        Optional<Events> opt = er.findById(idEvent);
+        if (opt.isEmpty()) {
+            return "redirect:/Events";
+        }
+
+        Events events = opt.get();
+        convidados.setEvents(events);
+
+        cr.save(convidados);
+        
+        return "redirect:/Events/{idEvent}";
+        
+    }
+
 }
