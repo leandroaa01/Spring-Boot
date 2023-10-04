@@ -2,7 +2,6 @@ package ifrn.pi.eventos.Controllers;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import ifrn.pi.eventos.Models.Convidados;
 import ifrn.pi.eventos.Models.Events;
 import ifrn.pi.eventos.repositories.ConvidadoRepository;
@@ -75,11 +73,21 @@ public class EventsController {
 
         Events events = opt.get();
         convidados.setEvents(events);
-
         cr.save(convidados);
         
         return "redirect:/Events/{idEvent}";
         
     }
+    @GetMapping("/{id}/delete")
+    public String apagarEvent(@PathVariable long id){
+        Optional<Events> opt = er.findById(id);
 
+        if(!opt.isEmpty()){
+            Events events = opt.get();
+            List<Convidados> convidados = cr.findByEvents(events);
+            cr.deleteAll(convidados);
+            er.delete(events);
+        }
+        return "redirect:/Events";
+    }
 }

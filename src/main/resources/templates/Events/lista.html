@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Eventos</title>
 </head>
@@ -19,6 +20,7 @@
               <th>Local</th>
               <th>Date</th>
               <th>Time</th>  
+              <th></th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +30,7 @@
                 <td th:text="${e.local}">Local event</td>
                 <td th:text="${e.date}">Date event</td>
                 <td th:text="${e.time}">Time event</td>
+                <td><a th:href="@{/Events/{id}/delete(id=${e.id})}"><i class="material-icons">delete</i></a></td>
             </tr>
         </tbody> 
     </table>
