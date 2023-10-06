@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import ifrn.pi.eventos.Models.Convidados;
-import ifrn.pi.eventos.Models.Events;
+import ifrn.pi.eventos.Models.Convidado;
+import ifrn.pi.eventos.Models.Evento;
 
 
-public interface ConvidadoRepository extends JpaRepository <Convidados, Long>{
+public interface ConvidadoRepository extends JpaRepository <Convidado, Long>{
     
-    List<Convidados> findByEvents(Events events);
+    List<Convidado> findByEvento(Evento evento);
 }
 

@@ -24,15 +24,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each ="e : ${Events}">
+            <tr th:each ="e : ${eventos}">
                 <td th:text="${e.id}">1</td>
-                <td><a th:href="@{/Events/{id}(id=${e.id})}"><span th:text="${e.name}">Name event </span></a></td>
+                <td><a th:href="@{/eventos/{id}(id=${e.id})}"><span th:text="${e.name}">Name event </span></a></td>
                 <td th:text="${e.local}">Local event</td>
                 <td th:text="${e.date}">Date event</td>
                 <td th:text="${e.time}">Time event</td>
                 <td>
-                    <a th:href="@{/Events/{id}/edit(id=${e.id})}" ><i class="material-icons">edit</i></a>
-                    <a th:href="@{/Events/{id}/delete(id=${e.id})}"><i class="material-icons">delete</i></a>
+                    <a th:href="@{/eventos/{id}/edit(id=${e.id})}" ><i class="material-icons">edit</i></a>
+                    <a th:href="@{/eventos/{id}/delete(id=${e.id})}"><i class="material-icons">delete</i></a>
                 </td>
             </tr>
         </tbody> 
