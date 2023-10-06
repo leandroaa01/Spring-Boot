@@ -24,14 +24,14 @@ public class EventsController {
     private ConvidadoRepository cr;
 
     @GetMapping("/form")
-    public String form() {
+    public String form(Events events) {
         return "Events/formEvent";
     }
 
     @PostMapping
-    public String processarFormulario(Events eventos){
-        System.out.println(eventos);
-        er.save(eventos);
+    public String processarFormulario(Events events){
+        System.out.println(events);
+        er.save(events);
         return "redirect:/Events";
     }
 
@@ -44,7 +44,7 @@ public class EventsController {
     }
 
     @GetMapping("/{id}")
-    public ModelAndView detalhar(@PathVariable() Long id){
+    public ModelAndView detalhar(@PathVariable() Long id, Convidados convidado){
         ModelAndView md = new ModelAndView();
         Optional<Events> opt = er.findById(id);
         if(opt.isEmpty()){
@@ -87,4 +87,18 @@ public class EventsController {
         }
         return "redirect:/Events/{id}";
     }
+
+     @GetMapping("/{id}/edit")
+    public ModelAndView editEvent(@PathVariable long id){
+        ModelAndView md= new ModelAndView();
+        Optional<Events> opt = er.findById(id);
+        if (opt.isEmpty()) {
+       md.setViewName("redirect:/Events");
+       return md;
+    }
+    Events events = opt.get();
+    md.setViewName("Events/formEvent");
+    md.addObject("events", events);
+    return md;
+}
 }
