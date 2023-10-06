@@ -81,7 +81,6 @@ public class EventsController {
     @GetMapping("/{id}/delete")
     public String apagarEvent(@PathVariable long id){
         Optional<Events> opt = er.findById(id);
-
         if(!opt.isEmpty()){
             Events events = opt.get();
             List<Convidados> convidados = cr.findByEvents(events);
