@@ -32,9 +32,7 @@ public class EventsController {
     public String processarFormulario(Events eventos){
         System.out.println(eventos);
         er.save(eventos);
-
-        // Redirecione para uma página de confirmação
-        return "Events/confirmacao";
+        return "redirect:/Events";
     }
 
     @GetMapping
@@ -87,6 +85,6 @@ public class EventsController {
             cr.deleteAll(convidados);
             er.delete(events);
         }
-        return "redirect:/Events";
+        return "redirect:/Events/{id}";
     }
 }
