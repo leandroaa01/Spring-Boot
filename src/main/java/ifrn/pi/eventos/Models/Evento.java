@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Events {
+public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,7 +46,7 @@ public class Events {
     }
     @Override
     public String toString() {
-        return "Events [id=" + id + ", name=" + name + ", local=" + local + ", date=" + date + ", time=" + time + "]";
+        return "Evento [id=" + id + ", name=" + name + ", local=" + local + ", date=" + date + ", time=" + time + "]";
     }
     
 }

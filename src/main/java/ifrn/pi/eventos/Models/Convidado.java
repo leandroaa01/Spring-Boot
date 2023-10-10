@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Convidados {
+public class Convidado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,11 +15,11 @@ public class Convidados {
     private String nome;
 
     @ManyToOne
-    private Events events;
+    private Evento evento;
 
     @Override
     public String toString() {
-        return "Convidados [id=" + id + ", rg=" + rg + ", nome=" + nome + ", events=" + events + "]";
+        return "Convidado [id=" + id + ", rg=" + rg + ", nome=" + nome + ", events=" + evento + "]";
     }
 
     public Long getId() {
@@ -46,11 +46,11 @@ public class Convidados {
         this.nome = nome;
     }
 
-    public Events getEvents() {
-        return events;
+    public Evento getEvento() {
+        return evento;
     }
 
-    public void setEvents(Events events) {
-        this.events = events;
+    public void setEvento(Evento evento) {
+        this.evento = evento;
     }
 }

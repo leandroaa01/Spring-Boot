@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Eventos</title>
 </head>
@@ -19,15 +20,20 @@
               <th>Local</th>
               <th>Date</th>
               <th>Time</th>  
+              <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each ="e : ${Events}">
+            <tr th:each ="e : ${eventos}">
                 <td th:text="${e.id}">1</td>
-                <td><a th:href="@{/Events/{id}(id=${e.id})}"><span th:text="${e.name}">Name event </span></a></td>
+                <td><a th:href="@{/eventos/{id}(id=${e.id})}"><span th:text="${e.name}">Name event </span></a></td>
                 <td th:text="${e.local}">Local event</td>
                 <td th:text="${e.date}">Date event</td>
                 <td th:text="${e.time}">Time event</td>
+                <td>
+                    <a th:href="@{/eventos/{id}/edit(id=${e.id})}" ><i class="material-icons">edit</i></a>
+                    <a th:href="@{/eventos/{id}/delete(id=${e.id})}"><i class="material-icons">delete</i></a>
+                </td>
             </tr>
         </tbody> 
     </table>
