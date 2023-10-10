@@ -16,7 +16,7 @@ import ifrn.pi.eventos.repositories.EventoRepository;
 
 @Controller
 @RequestMapping("/eventos")
-public class EventsController {
+public class EventosController {
    	@Autowired
 	private EventoRepository er;
 	@Autowired
@@ -80,7 +80,7 @@ public class EventsController {
 		
 		return "redirect:/eventos/{idEvento}";
 	}
-    @GetMapping("/{id}/selecionar")
+    @GetMapping("/{id}/edit")
 	public ModelAndView selecionarEvento(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
 		Optional<Evento> opt = er.findById(id);
@@ -97,7 +97,7 @@ public class EventsController {
 	}
 	
 	
-	@GetMapping("/{id}/remover")
+	@GetMapping("/{id}/delete")
 	public String apagarEvento(@PathVariable Long id) {
 		
 		Optional<Evento> opt = er.findById(id);
@@ -126,7 +126,7 @@ public class EventsController {
 		
 		return "redirect:/eventos/{idEvento}";
 	}
-    @GetMapping("/{idEvento}/convidados/{idConvidado}/selecionar")
+    @GetMapping("/{idEvento}/convidados/{idConvidado}/edit")
 	public ModelAndView selecionarConvidado(@PathVariable Long idEvento, @PathVariable Long idConvidado) {
 		ModelAndView md = new ModelAndView();
 		
