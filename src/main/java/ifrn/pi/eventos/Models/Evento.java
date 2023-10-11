@@ -1,18 +1,29 @@
 package ifrn.pi.eventos.Models;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String name;
+    @NotBlank
     private String local;
-    private String date;
+    @NotNull
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate date;
+    @NotNull
     private String time;
      public Long getId() {
         return id;
@@ -32,10 +43,10 @@ public class Evento {
     public void setLocal(String local) {
         this.local = local;
     }
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
-    public void setDate(String date) {
+    public void setDate( LocalDate date) {
         this.date = date;
     }
     public String getTime() {

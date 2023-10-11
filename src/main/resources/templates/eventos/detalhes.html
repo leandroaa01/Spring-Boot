@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<link rel="shortcut icon" href="https://suap.ifrn.edu.br/static/comum/img/favicon.png?v=fb93eb95141192c586d0251d4beb9dd5" />
 <title>Eventos</title>
 </head>
 <body>
@@ -48,21 +47,24 @@
 				<div class="card">
 					<div class="card-content">
 						<span class="card-title">Adicionar Convidado:</span>
-						<form th:action="@{/eventos/{idEvento}(idEvento=${evento.id})}" method="post">
+						<form th:action="@{/eventos/{idEvento}(idEvento=${evento.id})}" method="post" th:object="${convidado}">
 							<div>
-								<input type="hidden" name="id" th:value="${convidado.id}" readonly="readonly">
+								<input type="hidden" th:field="*{id}" readonly="readonly">
 							</div>
 							<div>
-								<label>Nome: </label> <input type="text" name="nome" th:value="${convidado.nome}">
+								<label>Nome: </label> <input type="text" th:field="*{nome}">
+								<p th:errors="*{nome}"></p>
 							</div>
 							<div>
-								<label>RG: </label> <input type="text" name="rg" th:value="${convidado.rg}">
+								<label>RG: </label> <input type="text" th:field="*{rg}">
+								<p th:errors="*{rg}"></p>
 							</div>
 							<div>
 								<button type="submit" class="btn">Salvar</button>
 								<button type="reset" class="btn">Limpar</button>
 							</div>
 						</form>
+						<p th:if="${mensagem}" th:text="${mensagem}"></p>
 					</div>
 				</div>
 			</div>
